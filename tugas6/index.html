@@ -164,221 +164,166 @@ data sesuai berdasarkan keberadaan tiap-tiap titik data sesuai dengan derajat ke
 <p><img alt="img" src="https://4.bp.blogspot.com/-dDJvrkKdprs/V7KUiMYI1QI/AAAAAAAAAJo/cZjmq2j9zGsyX5w3Wvj6i7vIZYHDIrhvQCLcB/s1600/c4.JPG" /></p>
 <p><img alt="img" src="https://2.bp.blogspot.com/-AQWtEgHUDys/V7KUiqxkAVI/AAAAAAAAAJs/5isLF9M7HsISISbAZ-bIEGJzVIGrrnAGQCLcB/s1600/c5.JPG" /></p>
 <h2 id="contoh-program">Contoh Program</h2>
-<ol>
-<li>Siapkan Environment</li>
-</ol>
-<p>```python
-   import pandas as pd
-   from pandas import DataFrame
-   import random
-   import numpy as np
-   from IPython.display import HTML, display
-   from tabulate import tabulate
-   from math import log
-   from sklearn.feature_selection import mutual_info_classif</p>
-<p>def table(df): display(HTML(tabulate(df, tablefmt='html', headers='keys', showindex=False)))</p>
-<p>```</p>
-<p>```python
-   Data = pd.read_csv('hayes-roth.csv', sep=',')
-   Data = Data[['name','hobby', 'age', 'educationallevel', 'maritalstatus','class']].sample(6, random_state=42)
-   D = Data.values
-   print("Table (D) &gt;&gt;")
-   table(D)</p>
-<p>```</p>
-<p>Output:</p>
-<p><code>Table (D) &gt;&gt;</code></p>
+<h3 id="siapkan-environment">Siapkan Environment</h3>
+<pre><code class="python">
+import pandas as pd
+from pandas import DataFrame
+import random
+import numpy as np
+from IPython.display import HTML, display
+from tabulate import tabulate
+from math import log
+from sklearn.feature_selection import mutual_info_classif
+
+def table(df): display(HTML(tabulate(df, tablefmt='html', headers='keys', showindex=False)))
+
+</code></pre>
+
+<pre><code class="python">Data = pd.read_csv('hayes-roth.csv', sep=',')
+Data = Data[['name','hobby', 'age', 'educationallevel', 'maritalstatus','class']].sample(6, random_state=42)
+D = Data.values
+print(&quot;Table (D) &gt;&gt;&quot;)
+table(D)
+
+</code></pre>
+
+<pre><code>Table (D) &gt;&gt;
+</code></pre>
 <table>
 <thead>
-<tr>
-<th align="right">0</th>
-<th align="right">1</th>
-<th align="right">2</th>
-<th align="right">3</th>
-<th align="right">4</th>
-<th align="right">5</th>
-</tr>
+<tr><th style="text-align: right;">  0</th><th style="text-align: right;">  1</th><th style="text-align: right;">  2</th><th style="text-align: right;">  3</th><th style="text-align: right;">  4</th><th style="text-align: right;">  5</th></tr>
 </thead>
 <tbody>
-<tr>
-<td align="right">70</td>
-<td align="right">2</td>
-<td align="right">2</td>
-<td align="right">2</td>
-<td align="right">1</td>
-<td align="right">2</td>
-</tr>
-<tr>
-<td align="right">35</td>
-<td align="right">1</td>
-<td align="right">2</td>
-<td align="right">1</td>
-<td align="right">3</td>
-<td align="right">1</td>
-</tr>
-<tr>
-<td align="right">89</td>
-<td align="right">3</td>
-<td align="right">1</td>
-<td align="right">3</td>
-<td align="right">2</td>
-<td align="right">1</td>
-</tr>
-<tr>
-<td align="right">114</td>
-<td align="right">2</td>
-<td align="right">2</td>
-<td align="right">1</td>
-<td align="right">3</td>
-<td align="right">1</td>
-</tr>
-<tr>
-<td align="right">93</td>
-<td align="right">2</td>
-<td align="right">1</td>
-<td align="right">2</td>
-<td align="right">1</td>
-<td align="right">1</td>
-</tr>
-<tr>
-<td align="right">24</td>
-<td align="right">1</td>
-<td align="right">2</td>
-<td align="right">3</td>
-<td align="right">3</td>
-<td align="right">2</td>
-</tr>
+<tr><td style="text-align: right;"> 70</td><td style="text-align: right;">  2</td><td style="text-align: right;">  2</td><td style="text-align: right;">  2</td><td style="text-align: right;">  1</td><td style="text-align: right;">  2</td></tr>
+<tr><td style="text-align: right;"> 35</td><td style="text-align: right;">  1</td><td style="text-align: right;">  2</td><td style="text-align: right;">  1</td><td style="text-align: right;">  3</td><td style="text-align: right;">  1</td></tr>
+<tr><td style="text-align: right;"> 89</td><td style="text-align: right;">  3</td><td style="text-align: right;">  1</td><td style="text-align: right;">  3</td><td style="text-align: right;">  2</td><td style="text-align: right;">  1</td></tr>
+<tr><td style="text-align: right;">114</td><td style="text-align: right;">  2</td><td style="text-align: right;">  2</td><td style="text-align: right;">  1</td><td style="text-align: right;">  3</td><td style="text-align: right;">  1</td></tr>
+<tr><td style="text-align: right;"> 93</td><td style="text-align: right;">  2</td><td style="text-align: right;">  1</td><td style="text-align: right;">  2</td><td style="text-align: right;">  1</td><td style="text-align: right;">  1</td></tr>
+<tr><td style="text-align: right;"> 24</td><td style="text-align: right;">  1</td><td style="text-align: right;">  2</td><td style="text-align: right;">  3</td><td style="text-align: right;">  3</td><td style="text-align: right;">  2</td></tr>
 </tbody>
 </table>
+
 <p>Dimana:</p>
 <ul>
-<li>
-<p>n = jumlah sampel = 6</p>
-</li>
-<li>
-<p>m = jumlah fitur = 6</p>
-</li>
-<li>
-<p>c = jumlah cluster = 3</p>
-</li>
-<li>
-<p>w = tingkat blur/fuzzyy = 2</p>
-</li>
-<li>
-<p>T = batas maks iterasi = 10</p>
-</li>
-<li>
-<p>e = akurasi = 0.1</p>
-</li>
-<li>
-<p>Pt = fungsi objektif ke-1</p>
-</li>
-<li>
-<p>t = iterasi ke-t</p>
-<ol>
-<li>
-<p>Matriks Derajat Cluster (U = c x n)</p>
-<p><code>python
-random.seed(42)
+<li>n = jumlah sampel = 6</li>
+<li>m = jumlah fitur = 6</li>
+<li>c = jumlah cluster = 3</li>
+<li>w = tingkat blur/fuzzyy = 2</li>
+<li>T = batas maks iterasi = 10</li>
+<li>e = akurasi = 0.1</li>
+<li>Pt = fungsi objektif ke-1</li>
+<li>t = iterasi ke-t</li>
+</ul>
+<h3 id="matriks-derajat-cluster-u-c-x-n">Matriks Derajat Cluster (U = c x n)</h3>
+<pre><code class="python">random.seed(42)
 U = np.array([[random.uniform(0, 1) for _ in range(c)] for _ in range(n)])
-print("U &gt;&gt;\n")
-print(U)</code></p>
-<p>```
-U &gt;&gt;</p>
-<p>[[0.6394268  0.02501076 0.27502932]
+print(&quot;U &gt;&gt;\n&quot;)
+print(U)
+
+</code></pre>
+
+<pre><code>U &gt;&gt;
+
+[[0.6394268  0.02501076 0.27502932]
  [0.22321074 0.73647121 0.67669949]
  [0.89217957 0.08693883 0.42192182]
  [0.02979722 0.21863797 0.50535529]
  [0.02653597 0.19883765 0.64988444]
  [0.54494148 0.22044062 0.58926568]]
-```</p>
-</li>
-</ol>
-</li>
-<li>
-<p>Mencari Pusat Cluster</p>
-</li>
-</ul>
-<p><code>python
-   # Caution: NP Array is math-agnostic (column-by-column)
-   def cluster(U, D, x, y): return sum([U[i,y]**w*D[i,x] for i in range(n)])/sum([U[i,y]**w for i in range(n)])
-   V = np.array([[cluster(U,D,x,y) for x in range(m)] for y in range(c)])
-   print("V &gt;&gt;\n")
-   print(V)</code></p>
-<p>```
-   V &gt;&gt;</p>
-<p>[[69.85510373  2.28920438  1.48707537  2.67101235  1.96014835  1.45442663]
-    [43.6889526   1.15015326  1.93139941  1.22209075  2.87198632  1.07169573]
-    [65.58505956  1.6388595   1.65427537  1.89170816  2.32394666  1.24351466]]
-   ```</p>
-<ol>
-<li>Menghitung Pt</li>
-</ol>
-<p><code>python
-   def objective(V,U,D): return sum([sum([sum([(D[i,j]-V[k,j])**2 for j in range(m)])*(U[i,k]**w) for k in range(c)]) for i in range(n)])
-   Pt = objective(V,U,D)
-   print("Pt &gt;&gt;\n")
-   print(Pt)</code></p>
-<p>```
-   Pt &gt;&gt;</p>
-<p>3438.598774374134
-   ```</p>
-<ol>
-<li>Menghitung Lagi Matriks Derajat Cluster</li>
-</ol>
-<p><code>python
-   def converge(V,D,i,k): return (sum([(D[i,j]-V[k,j])**2 for j in range(m)])**(-1/(w-1)))/sum([sum([(D[i,j]-V[k,j])**2 for j in range(m)])**(-1/(w-1)) for k in range(c)])
-   print("U &gt;&gt;\n")
-   np.array([[converge(V,D,i,k) for k in range(c)] for i in range(n)])</code></p>
-<p><code>U &gt;&gt;</code></p>
-<p>Out:</p>
-<p><code>array([[0.9130715 , 0.00266545, 0.08426305],
-          [0.05419267, 0.87521735, 0.07058998],
-          [0.54220405, 0.0966894 , 0.36110655],
-          [0.44888379, 0.17732221, 0.37379401],
-          [0.5171747 , 0.11407197, 0.36875333],
-          [0.13170965, 0.70814158, 0.16014877]])</code></p>
-<ol>
-<li>Mengecek Looping Berhenti atau Lanjut</li>
-</ol>
-<p>```python
-   def iterate(U):
-       V = np.array([[cluster(U, D, x, y) for x in range(m)] for y in range(c)])
-       return np.array([[converge(V,D,i,k) for k in range(c)] for i in range(n)]), objective(V,U,D)</p>
-<p>def fuzzyCM(U):
-       #U = np.array([[random.uniform(0, 1) for _ in range(c)] for _ in range(n)])</p>
-<pre><code>   U, P2, P, t = *iterate(U), 0, 1
-   while abs(P2 - P) &gt; e and t &lt; T:
-       U, P2, P, t = *iterate(U), P2, t+1
-   return U, t
 </code></pre>
-<p>FuzzyResult, FuzzyIters = fuzzyCM(U)
-   print("Iterating %d times, fuzzy result &gt;&gt; \n" % FuzzyIters)
-   print(FuzzyResult)
-   ```</p>
-<p>```
-   Iterating 8 times, fuzzy result &gt;&gt; </p>
-<p>[[0.99386605 0.00215208 0.00398187]
-    [0.02248809 0.97019588 0.00731603]
-    [0.27822304 0.02330957 0.6984674 ]
-    [0.10033179 0.02499091 0.8746773 ]
-    [0.09453112 0.01047577 0.89499311]
-    [0.01337151 0.98128362 0.00534487]]
-   ```</p>
-<ol>
-<li>Tentukan Cluster dengan Mengambil Nilai Terbesar</li>
-</ol>
-<p>```python
-   table(DataFrame([D[i].tolist()+[np.argmax(FuzzyResult[i].tolist())] for i in range(n)], columns=Data.columns.tolist()+["Cluster Index"]))</p>
-<p>```</p>
-<p><img alt="1573706831911" src="C:\Users\G4030\AppData\Roaming\Typora\typora-user-images\1573706831911.png" /></p>
-<p>.</p>
-<p>.</p>
-<p>.</p>
-<p>.</p>
-<p>.</p>
-<p>Referensi :</p>
-<p>http://mtkmudahbanar.blogspot.com/2016/08/metode-clustering-k-means-dan-fuzzy-c.html</p>
-<p><a href="http://eprints.unm.ac.id/9027/1/24 Artikel.pdf">http://eprints.unm.ac.id/9027/1/24%20Artikel.pdf</a></p></div>
+<h3 id="mencari-pusat-cluster">Mencari Pusat Cluster</h3>
+<pre><code class="python"># Caution: NP Array is math-agnostic (column-by-column)
+def cluster(U, D, x, y): return sum([U[i,y]**w*D[i,x] for i in range(n)])/sum([U[i,y]**w for i in range(n)])
+V = np.array([[cluster(U,D,x,y) for x in range(m)] for y in range(c)])
+print(&quot;V &gt;&gt;\n&quot;)
+print(V)
+
+</code></pre>
+
+<pre><code>V &gt;&gt;
+
+[[69.85510373  2.28920438  1.48707537  2.67101235  1.96014835  1.45442663]
+ [43.6889526   1.15015326  1.93139941  1.22209075  2.87198632  1.07169573]
+ [65.58505956  1.6388595   1.65427537  1.89170816  2.32394666  1.24351466]]
+</code></pre>
+<h3 id="menghitung-pt">Menghitung Pt</h3>
+<pre><code class="python">def objective(V,U,D): return sum([sum([sum([(D[i,j]-V[k,j])**2 for j in range(m)])*(U[i,k]**w) for k in range(c)]) for i in range(n)])
+Pt = objective(V,U,D)
+print(&quot;Pt &gt;&gt;\n&quot;)
+print(Pt)
+
+</code></pre>
+
+<pre><code>Pt &gt;&gt;
+
+3438.598774374134
+</code></pre>
+<h3 id="menghitung-ulang-matriks-derajat-cluster">Menghitung Ulang Matriks Derajat Cluster</h3>
+<pre><code class="python">def converge(V,D,i,k): return (sum([(D[i,j]-V[k,j])**2 for j in range(m)])**(-1/(w-1)))/sum([sum([(D[i,j]-V[k,j])**2 for j in range(m)])**(-1/(w-1)) for k in range(c)])
+print(&quot;U &gt;&gt;\n&quot;)
+np.array([[converge(V,D,i,k) for k in range(c)] for i in range(n)])
+
+</code></pre>
+
+<pre><code>U &gt;&gt;
+</code></pre>
+<p>​    </p>
+<pre><code>array([[0.9130715 , 0.00266545, 0.08426305],
+       [0.05419267, 0.87521735, 0.07058998],
+       [0.54220405, 0.0966894 , 0.36110655],
+       [0.44888379, 0.17732221, 0.37379401],
+       [0.5171747 , 0.11407197, 0.36875333],
+       [0.13170965, 0.70814158, 0.16014877]])
+</code></pre>
+<h3 id="mengecek-looping-berhenti-atau-lanjut">Mengecek Looping Berhenti atau Lanjut</h3>
+<pre><code class="python">def iterate(U):
+    V = np.array([[cluster(U, D, x, y) for x in range(m)] for y in range(c)])
+    return np.array([[converge(V,D,i,k) for k in range(c)] for i in range(n)]), objective(V,U,D)
+
+def fuzzyCM(U):
+    #U = np.array([[random.uniform(0, 1) for _ in range(c)] for _ in range(n)])
+
+    U, P2, P, t = *iterate(U), 0, 1
+    while abs(P2 - P) &gt; e and t &lt; T:
+        U, P2, P, t = *iterate(U), P2, t+1
+    return U, t
+
+FuzzyResult, FuzzyIters = fuzzyCM(U)
+print(&quot;Iterating %d times, fuzzy result &gt;&gt; \n&quot; % FuzzyIters)
+print(FuzzyResult)
+
+</code></pre>
+
+<pre><code>Iterating 8 times, fuzzy result &gt;&gt;
+
+[[0.99386605 0.00215208 0.00398187]
+ [0.02248809 0.97019588 0.00731603]
+ [0.27822304 0.02330957 0.6984674 ]
+ [0.10033179 0.02499091 0.8746773 ]
+ [0.09453112 0.01047577 0.89499311]
+ [0.01337151 0.98128362 0.00534487]]
+</code></pre>
+<h3 id="tentukan-cluster-dengan-mengambil-nilai-terbesar">Tentukan Cluster dengan Mengambil Nilai Terbesar</h3>
+<pre><code class="python">table(DataFrame([D[i].tolist()+[np.argmax(FuzzyResult[i].tolist())] for i in range(n)], columns=Data.columns.tolist()+[&quot;Cluster Index&quot;]))
+
+</code></pre>
+
+<table>
+<thead>
+<tr><th style="text-align: right;">  name</th><th style="text-align: right;">  hobby</th><th style="text-align: right;">  age</th><th style="text-align: right;">  educationallevel</th><th style="text-align: right;">  maritalstatus</th><th style="text-align: right;">  class</th><th style="text-align: right;">  Cluster Index</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: right;">    70</td><td style="text-align: right;">      2</td><td style="text-align: right;">    2</td><td style="text-align: right;">                 2</td><td style="text-align: right;">              1</td><td style="text-align: right;">      2</td><td style="text-align: right;">              0</td></tr>
+<tr><td style="text-align: right;">    35</td><td style="text-align: right;">      1</td><td style="text-align: right;">    2</td><td style="text-align: right;">                 1</td><td style="text-align: right;">              3</td><td style="text-align: right;">      1</td><td style="text-align: right;">              1</td></tr>
+<tr><td style="text-align: right;">    89</td><td style="text-align: right;">      3</td><td style="text-align: right;">    1</td><td style="text-align: right;">                 3</td><td style="text-align: right;">              2</td><td style="text-align: right;">      1</td><td style="text-align: right;">              2</td></tr>
+<tr><td style="text-align: right;">   114</td><td style="text-align: right;">      2</td><td style="text-align: right;">    2</td><td style="text-align: right;">                 1</td><td style="text-align: right;">              3</td><td style="text-align: right;">      1</td><td style="text-align: right;">              2</td></tr>
+<tr><td style="text-align: right;">    93</td><td style="text-align: right;">      2</td><td style="text-align: right;">    1</td><td style="text-align: right;">                 2</td><td style="text-align: right;">              1</td><td style="text-align: right;">      1</td><td style="text-align: right;">              2</td></tr>
+<tr><td style="text-align: right;">    24</td><td style="text-align: right;">      1</td><td style="text-align: right;">    2</td><td style="text-align: right;">                 3</td><td style="text-align: right;">              3</td><td style="text-align: right;">      2</td><td style="text-align: right;">              1</td></tr>
+</tbody>
+</table>
+
+<pre><code class="python">
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
