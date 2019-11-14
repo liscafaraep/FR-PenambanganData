@@ -167,7 +167,7 @@ data sesuai berdasarkan keberadaan tiap-tiap titik data sesuai dengan derajat ke
 <ol>
 <li>Siapkan Environment</li>
 </ol>
-<p>```py
+<p>```python
    import pandas as pd
    from pandas import DataFrame
    import random
@@ -178,7 +178,7 @@ data sesuai berdasarkan keberadaan tiap-tiap titik data sesuai dengan derajat ke
    from sklearn.feature_selection import mutual_info_classif</p>
 <p>def table(df): display(HTML(tabulate(df, tablefmt='html', headers='keys', showindex=False)))</p>
 <p>```</p>
-<p>```py
+<p>```python
    Data = pd.read_csv('hayes-roth.csv', sep=',')
    Data = Data[['name','hobby', 'age', 'educationallevel', 'maritalstatus','class']].sample(6, random_state=42)
    D = Data.values
@@ -277,7 +277,7 @@ data sesuai berdasarkan keberadaan tiap-tiap titik data sesuai dengan derajat ke
 <ol>
 <li>
 <p>Matriks Derajat Cluster (U = c x n)</p>
-<p><code>py
+<p><code>python
 random.seed(42)
 U = np.array([[random.uniform(0, 1) for _ in range(c)] for _ in range(n)])
 print("U &gt;&gt;\n")
@@ -298,7 +298,7 @@ U &gt;&gt;</p>
 <p>Mencari Pusat Cluster</p>
 </li>
 </ul>
-<p><code>py
+<p><code>python
    # Caution: NP Array is math-agnostic (column-by-column)
    def cluster(U, D, x, y): return sum([U[i,y]**w*D[i,x] for i in range(n)])/sum([U[i,y]**w for i in range(n)])
    V = np.array([[cluster(U,D,x,y) for x in range(m)] for y in range(c)])
@@ -313,7 +313,7 @@ U &gt;&gt;</p>
 <ol>
 <li>Menghitung Pt</li>
 </ol>
-<p><code>py
+<p><code>python
    def objective(V,U,D): return sum([sum([sum([(D[i,j]-V[k,j])**2 for j in range(m)])*(U[i,k]**w) for k in range(c)]) for i in range(n)])
    Pt = objective(V,U,D)
    print("Pt &gt;&gt;\n")
@@ -325,7 +325,7 @@ U &gt;&gt;</p>
 <ol>
 <li>Menghitung Lagi Matriks Derajat Cluster</li>
 </ol>
-<p><code>py
+<p><code>python
    def converge(V,D,i,k): return (sum([(D[i,j]-V[k,j])**2 for j in range(m)])**(-1/(w-1)))/sum([sum([(D[i,j]-V[k,j])**2 for j in range(m)])**(-1/(w-1)) for k in range(c)])
    print("U &gt;&gt;\n")
    np.array([[converge(V,D,i,k) for k in range(c)] for i in range(n)])</code></p>
@@ -340,7 +340,7 @@ U &gt;&gt;</p>
 <ol>
 <li>Mengecek Looping Berhenti atau Lanjut</li>
 </ol>
-<p>```py
+<p>```python
    def iterate(U):
        V = np.array([[cluster(U, D, x, y) for x in range(m)] for y in range(c)])
        return np.array([[converge(V,D,i,k) for k in range(c)] for i in range(n)]), objective(V,U,D)</p>
@@ -367,7 +367,7 @@ U &gt;&gt;</p>
 <ol>
 <li>Tentukan Cluster dengan Mengambil Nilai Terbesar</li>
 </ol>
-<p>```py
+<p>```python
    table(DataFrame([D[i].tolist()+[np.argmax(FuzzyResult[i].tolist())] for i in range(n)], columns=Data.columns.tolist()+["Cluster Index"]))</p>
 <p>```</p>
 <p><img alt="1573706831911" src="C:\Users\G4030\AppData\Roaming\Typora\typora-user-images\1573706831911.png" /></p>
