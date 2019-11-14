@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Tugas 6 - Penambangan Data</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">Penambangan Data</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Home</a>
+                            </li>
+                            <li >
+                                <a href="../tugas1/">Tugas 1</a>
+                            </li>
+                            <li >
+                                <a href="../tugas2/">Tugas 2</a>
+                            </li>
+                            <li >
+                                <a href="../tugas3/">Tugas 3</a>
+                            </li>
+                            <li >
+                                <a href="../tugas4/">Tugas 4</a>
+                            </li>
+                            <li >
+                                <a href="../tugas5/">Tugas 5</a>
+                            </li>
+                            <li class="active">
+                                <a href="./">Tugas 6</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../tugas5/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="disabled">
+                                <a rel="prev" >
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#tugas-6">Tugas 6</a></li>
+        <li class="main "><a href="#fuzzy-c-means-clustering">Fuzzy C-Means Clustering</a></li>
+            <li><a href="#pengertian-clustering">Pengertian Clustering</a></li>
+            <li><a href="#pengertian-fuzzy-clustering">Pengertian Fuzzy Clustering</a></li>
+            <li><a href="#kelebihan-dan-kekurangan">Kelebihan dan Kekurangan</a></li>
+            <li><a href="#algoritma-fuzzy-c-means">Algoritma Fuzzy C-Means</a></li>
+            <li><a href="#contoh-program">Contoh Program</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="tugas-6">Tugas 6</h1>
+<h1 id="fuzzy-c-means-clustering">Fuzzy C-Means Clustering</h1>
+<h2 id="pengertian-clustering">Pengertian Clustering</h2>
+<p>Clustering adalah suatu metode pengelompokan berdasarkan ukuran kedekatan (kemiripan). Clustering berbeda dengan group, kalau group berarti kelompok yang memiliki kondisi yang sama. Sedangkan cluster kelompoknya tidak harus sama, pengelompokan didasarkan pada
+kedekatan dari suatu karakteristik sampel yang ada, salah satunya dengan menggunakan rumus jarak Euclidean. Pengaplikasian cluster sangatlah banyak, hal ini dikarenakan dalam mengidentifikasi suatu permasalahan atau pengambilan keputusan selalu tidak sama persis akan
+tetapi cenderung memiliki kemiripan saja (Satriyanto, 2015).</p>
+<p>Metode clustering pada dasarnya mengoptimumkan pusat cluster (Centroid) (Kusumadewi,
+2010). Beberapa metode clustering yang sering digunakan antara lain, yaitu : 1) Berbasis
+Metode Statistik seperti Hirarchical clustering method dan Non Hirarchical clustering method,
+2) Berbasis Fuzzy : Fuzzy C-Means, 3) Berbasis Neural Network : Kohonen SOM, LVQ, dan 4)
+Metode lain untuk optimasi centroid atau lebar cluster seperti Genetik Algoritma (GA)
+(Satriyanto, 2015).</p>
+<h2 id="pengertian-fuzzy-clustering">Pengertian Fuzzy Clustering</h2>
+<p>Fuzzy C-Means Clustering (FCM) atau dikenal juga sebagai Fuzzy ISODATA, merupakan
+salah satu metode clustering yang merupakan bagian dari metode Hard K-Means. FCM
+menggunakan model pengelompokan fuzzy sehingga data dapat menjadi anggota dari semua
+kelas atau cluster terbentuk dengan derajat atau tingkat keanggotaan yang berbeda antara 0
+hingga 1. Tingkat keberadaan data dalam suatu kelas atau cluster ditentukan oleh derajat
+keanggotaannya. Teknik ini pertama kali diperkenalkan oleh Jim Bezdek pada tahun 1981
+(Kusumadewi, 2010). </p>
+<p>Menurut Bezdek ( dalam Afiyah, 2014), Fuzzy Clustering merupakan salah satu metode analisis
+cluster dengan mempertimbangkan tingkat keanggotaan yang mencakup himpunan fuzzy
+sebagai dasar pembobot bagi pengelompokan. Metode ini merupakan pengembangan dari
+metode partitioning data dengan pembobotan fuzzy. Keunggulan utama fuzzy clustering adalah
+dapat memberikan hasil pengelompokan bagi objek-objek yang tersebar tidak teratur, karena
+jika terdapat suatu data yang penyebaranya tidak teratur maka terdapat kemungkinan suatu titik
+data mempunyai sifat atau karakteristik dari cluster lain. Sehingga perlu adanya pembobotan
+kecenderungan titik data terhadap suatu cluster. </p>
+<h2 id="kelebihan-dan-kekurangan">Kelebihan dan Kekurangan</h2>
+<h4 id="kelebihan-k-means">Kelebihan K-Means</h4>
+<ol>
+<li>Selalu konvergen atau mampu melakukan klusterisasi</li>
+<li>Tidak membutuhkan operasi matematis yang rumit, bisa dibilang operasinyasederhana</li>
+<li>Beban komputasi relatif lebih ringan sehingga klusterisasi bisa dilakukandengan cepat walaupun relatif tergantung pada banyak jumlah data dan jumlahkluster yang ingin dicapai-</li>
+</ol>
+<h4 id="kekurangan-k-means">Kekurangan K-Means</h4>
+<ol>
+<li>Jumlah kluster harus ditentukan</li>
+<li>Nilai centroids yang diberikan di awal bisa mempengaruhi hasil klusterisasiapabila nilainya berbeda (sensitif terhadap nilaicentroids awal)</li>
+<li>Solusi kluster yang dihasilkan hanya bersifat local optima sehingga kita tidak tahu apakah itu sudah merupakan konfigurasi optimal atau belum</li>
+<li>Sangat sensitif pada pembangkitan titik pusat awal secara random.</li>
+<li>Memungkinkan suatu gerombol tidak mempunyai anggota.</li>
+<li>Hasil pengelompokan bersifat tidak unik (selalu berubah-ubah) terkadang bagus terkadang tidak.</li>
+<li>Sangat sulit mencapai global optimum.</li>
+<li>Algoritma k-means clustering walaupun proses pengerjaannya cepat tetapi keakuratannya tidak dijamin.</li>
+<li>Operasi matematis nya sangat sederhana</li>
+</ol>
+<h2 id="algoritma-fuzzy-c-means">Algoritma Fuzzy C-Means</h2>
+<p>Fuzzy C-Means (FCM) adalah salah satu teknik peng-cluster-an data yang mana keberadaan
+tiap-tiap titik data dalam suatu cluster ditentukan oleh derajat keanggotaannya. Teknik ini
+pertama kali diperkenalkan oleh Jim Bezdek pada tahun 1981 (Kusumadewi, 2006).
+Fuzzy Cluster Means (FCM) merupakan algoritma yang digunakan untuk melakukan clustering
+data sesuai berdasarkan keberadaan tiap-tiap titik data sesuai dengan derajat keanggotaannya
+(Ahmadi dan Hartati, 2013). Berikut adalah algoritma clustering FCM:</p>
+<p><img alt="img" src="https://4.bp.blogspot.com/-oqu7bPVgI8c/V7KUg_A545I/AAAAAAAAAJc/-dTUswvUjqszsE7oVZtdVhbjS9cfg1RRACLcB/s1600/c1.JPG" /> </p>
+<p><img alt="img" src="https://1.bp.blogspot.com/-wmNN6RqylTo/V7KUh_pA2hI/AAAAAAAAAJg/5qynJcosxU0WQbBHyUoLmTmvZnP3mZYRACLcB/s1600/c2.JPG" /></p>
+<p><img alt="img" src="https://3.bp.blogspot.com/-jHOxpnPVB-M/V7KUh324baI/AAAAAAAAAJk/7WHNjj6WgpMqfXoOUf1NDFBEvnSOGYuvQCLcB/s1600/c3.JPG" /></p>
+<p><img alt="img" src="https://4.bp.blogspot.com/-dDJvrkKdprs/V7KUiMYI1QI/AAAAAAAAAJo/cZjmq2j9zGsyX5w3Wvj6i7vIZYHDIrhvQCLcB/s1600/c4.JPG" /></p>
+<p><img alt="img" src="https://2.bp.blogspot.com/-AQWtEgHUDys/V7KUiqxkAVI/AAAAAAAAAJs/5isLF9M7HsISISbAZ-bIEGJzVIGrrnAGQCLcB/s1600/c5.JPG" /></p>
+<h2 id="contoh-program">Contoh Program</h2>
+<ol>
+<li>Siapkan Environment</li>
+</ol>
+<p>```py
+   import pandas as pd
+   from pandas import DataFrame
+   import random
+   import numpy as np
+   from IPython.display import HTML, display
+   from tabulate import tabulate
+   from math import log
+   from sklearn.feature_selection import mutual_info_classif</p>
+<p>def table(df): display(HTML(tabulate(df, tablefmt='html', headers='keys', showindex=False)))</p>
+<p>```</p>
+<p>```py
+   Data = pd.read_csv('hayes-roth.csv', sep=',')
+   Data = Data[['name','hobby', 'age', 'educationallevel', 'maritalstatus','class']].sample(6, random_state=42)
+   D = Data.values
+   print("Table (D) &gt;&gt;")
+   table(D)</p>
+<p>```</p>
+<p>Output:</p>
+<p><code>Table (D) &gt;&gt;</code></p>
+<table>
+<thead>
+<tr>
+<th align="right">0</th>
+<th align="right">1</th>
+<th align="right">2</th>
+<th align="right">3</th>
+<th align="right">4</th>
+<th align="right">5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">70</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td align="right">35</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="right">89</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="right">114</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="right">93</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="right">24</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+<p>Dimana:</p>
+<ul>
+<li>
+<p>n = jumlah sampel = 6</p>
+</li>
+<li>
+<p>m = jumlah fitur = 6</p>
+</li>
+<li>
+<p>c = jumlah cluster = 3</p>
+</li>
+<li>
+<p>w = tingkat blur/fuzzyy = 2</p>
+</li>
+<li>
+<p>T = batas maks iterasi = 10</p>
+</li>
+<li>
+<p>e = akurasi = 0.1</p>
+</li>
+<li>
+<p>Pt = fungsi objektif ke-1</p>
+</li>
+<li>
+<p>t = iterasi ke-t</p>
+<ol>
+<li>
+<p>Matriks Derajat Cluster (U = c x n)</p>
+<p><code>py
+random.seed(42)
+U = np.array([[random.uniform(0, 1) for _ in range(c)] for _ in range(n)])
+print("U &gt;&gt;\n")
+print(U)</code></p>
+<p>```
+U &gt;&gt;</p>
+<p>[[0.6394268  0.02501076 0.27502932]
+ [0.22321074 0.73647121 0.67669949]
+ [0.89217957 0.08693883 0.42192182]
+ [0.02979722 0.21863797 0.50535529]
+ [0.02653597 0.19883765 0.64988444]
+ [0.54494148 0.22044062 0.58926568]]
+```</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Mencari Pusat Cluster</p>
+</li>
+</ul>
+<p><code>py
+   # Caution: NP Array is math-agnostic (column-by-column)
+   def cluster(U, D, x, y): return sum([U[i,y]**w*D[i,x] for i in range(n)])/sum([U[i,y]**w for i in range(n)])
+   V = np.array([[cluster(U,D,x,y) for x in range(m)] for y in range(c)])
+   print("V &gt;&gt;\n")
+   print(V)</code></p>
+<p>```
+   V &gt;&gt;</p>
+<p>[[69.85510373  2.28920438  1.48707537  2.67101235  1.96014835  1.45442663]
+    [43.6889526   1.15015326  1.93139941  1.22209075  2.87198632  1.07169573]
+    [65.58505956  1.6388595   1.65427537  1.89170816  2.32394666  1.24351466]]
+   ```</p>
+<ol>
+<li>Menghitung Pt</li>
+</ol>
+<p><code>py
+   def objective(V,U,D): return sum([sum([sum([(D[i,j]-V[k,j])**2 for j in range(m)])*(U[i,k]**w) for k in range(c)]) for i in range(n)])
+   Pt = objective(V,U,D)
+   print("Pt &gt;&gt;\n")
+   print(Pt)</code></p>
+<p>```
+   Pt &gt;&gt;</p>
+<p>3438.598774374134
+   ```</p>
+<ol>
+<li>Menghitung Lagi Matriks Derajat Cluster</li>
+</ol>
+<p><code>py
+   def converge(V,D,i,k): return (sum([(D[i,j]-V[k,j])**2 for j in range(m)])**(-1/(w-1)))/sum([sum([(D[i,j]-V[k,j])**2 for j in range(m)])**(-1/(w-1)) for k in range(c)])
+   print("U &gt;&gt;\n")
+   np.array([[converge(V,D,i,k) for k in range(c)] for i in range(n)])</code></p>
+<p><code>U &gt;&gt;</code></p>
+<p>Out:</p>
+<p><code>array([[0.9130715 , 0.00266545, 0.08426305],
+          [0.05419267, 0.87521735, 0.07058998],
+          [0.54220405, 0.0966894 , 0.36110655],
+          [0.44888379, 0.17732221, 0.37379401],
+          [0.5171747 , 0.11407197, 0.36875333],
+          [0.13170965, 0.70814158, 0.16014877]])</code></p>
+<ol>
+<li>Mengecek Looping Berhenti atau Lanjut</li>
+</ol>
+<p>```py
+   def iterate(U):
+       V = np.array([[cluster(U, D, x, y) for x in range(m)] for y in range(c)])
+       return np.array([[converge(V,D,i,k) for k in range(c)] for i in range(n)]), objective(V,U,D)</p>
+<p>def fuzzyCM(U):
+       #U = np.array([[random.uniform(0, 1) for _ in range(c)] for _ in range(n)])</p>
+<pre><code>   U, P2, P, t = *iterate(U), 0, 1
+   while abs(P2 - P) &gt; e and t &lt; T:
+       U, P2, P, t = *iterate(U), P2, t+1
+   return U, t
+</code></pre>
+<p>FuzzyResult, FuzzyIters = fuzzyCM(U)
+   print("Iterating %d times, fuzzy result &gt;&gt; \n" % FuzzyIters)
+   print(FuzzyResult)
+   ```</p>
+<p>```
+   Iterating 8 times, fuzzy result &gt;&gt; </p>
+<p>[[0.99386605 0.00215208 0.00398187]
+    [0.02248809 0.97019588 0.00731603]
+    [0.27822304 0.02330957 0.6984674 ]
+    [0.10033179 0.02499091 0.8746773 ]
+    [0.09453112 0.01047577 0.89499311]
+    [0.01337151 0.98128362 0.00534487]]
+   ```</p>
+<ol>
+<li>Tentukan Cluster dengan Mengambil Nilai Terbesar</li>
+</ol>
+<p>```py
+   table(DataFrame([D[i].tolist()+[np.argmax(FuzzyResult[i].tolist())] for i in range(n)], columns=Data.columns.tolist()+["Cluster Index"]))</p>
+<p>```</p>
+<p><img alt="1573706831911" src="C:\Users\G4030\AppData\Roaming\Typora\typora-user-images\1573706831911.png" /></p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>Referensi :</p>
+<p>http://mtkmudahbanar.blogspot.com/2016/08/metode-clustering-k-means-dan-fuzzy-c.html</p>
+<p><a href="http://eprints.unm.ac.id/9027/1/24 Artikel.pdf">http://eprints.unm.ac.id/9027/1/24%20Artikel.pdf</a></p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
